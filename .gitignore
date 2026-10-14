@@ -1,0 +1,10 @@
+~$*
+*.tmp
+.DS_Store
+Thumbs.db
+.obsidian/
+.vscode/
+
+# Условия отбора не публикуем
+*.pdf
+!slides/*.pdf
