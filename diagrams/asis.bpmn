@@ -1,0 +1,359 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_campaign_asis" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.44.0">
+  <bpmn:collaboration id="Collab_campaign_asis">
+    <bpmn:participant id="Pool_campaign_asis" name="Запуск кампании в Городе — как есть" processRef="Process_campaign_asis" />
+    <bpmn:participant id="Ext_0" name="Клиенты Города" />
+    <bpmn:messageFlow id="MF_0" sourceRef="T7" targetRef="Ext_0" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_campaign_asis" isExecutable="true">
+    <bpmn:laneSet id="LaneSet_asis">
+      <bpmn:lane id="Lane_0" name="Маркетолог сервиса">
+        <bpmn:flowNodeRef>Start_idea</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T1</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T4</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T6</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>GW_ok</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_1" name="Проджект">
+        <bpmn:flowNodeRef>T4b</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_2" name="Редакция">
+        <bpmn:flowNodeRef>GW_m</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T5</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_3" name="Юрист">
+        <bpmn:flowNodeRef>T6b</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_4" name="Верстка и запуск">
+        <bpmn:flowNodeRef>AND_join</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T7</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_5" name="Аналитик">
+        <bpmn:flowNodeRef>T2</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>GW_go</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>AND_split</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>End_rej</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T3</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>C_done</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T8</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>End_ok</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="Start_idea" name="Появилась идея">
+      <bpmn:outgoing>Flow_Start_idea_T1</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:userTask id="T1" name="Сформулировать гипотезу (от 1 дня)">
+      <bpmn:incoming>Flow_Start_idea_T1</bpmn:incoming>
+      <bpmn:outgoing>Flow_T1_T2</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="T2" name="Оценить аудиторию и эффект (2 дня)">
+      <bpmn:incoming>Flow_T1_T2</bpmn:incoming>
+      <bpmn:outgoing>Flow_T2_GW_go</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="GW_go" name="Запускать?">
+      <bpmn:incoming>Flow_T2_GW_go</bpmn:incoming>
+      <bpmn:outgoing>Flow_GW_go_End_rej</bpmn:outgoing>
+      <bpmn:outgoing>Flow_GW_go_AND_split</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:endEvent id="End_rej" name="Гипотеза отклонена">
+      <bpmn:incoming>Flow_GW_go_End_rej</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:parallelGateway id="AND_split">
+      <bpmn:incoming>Flow_GW_go_AND_split</bpmn:incoming>
+      <bpmn:outgoing>Flow_AND_split_T4</bpmn:outgoing>
+      <bpmn:outgoing>Flow_AND_split_T3</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:userTask id="T4" name="Выбрать условия и каналы (1–2 дня)">
+      <bpmn:incoming>Flow_AND_split_T4</bpmn:incoming>
+      <bpmn:outgoing>Flow_T4_T4b</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="T4b" name="Поставить задачу редакции">
+      <bpmn:incoming>Flow_T4_T4b</bpmn:incoming>
+      <bpmn:outgoing>Flow_T4b_GW_m</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="T5" name="Подготовить креативы (2 дня)">
+      <bpmn:incoming>Flow_GW_m_T5</bpmn:incoming>
+      <bpmn:outgoing>Flow_T5_T6</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="T6" name="Сверить с условиями, КП и тоном">
+      <bpmn:incoming>Flow_T5_T6</bpmn:incoming>
+      <bpmn:outgoing>Flow_T6_GW_ok</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="GW_ok" name="Креативы корректны?">
+      <bpmn:incoming>Flow_T6_GW_ok</bpmn:incoming>
+      <bpmn:outgoing>Flow_GW_ok_T6b</bpmn:outgoing>
+      <bpmn:outgoing>Flow_GW_ok_GW_m</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:userTask id="T6b" name="Согласовать (вместе со сверкой 1 день)">
+      <bpmn:incoming>Flow_GW_ok_T6b</bpmn:incoming>
+      <bpmn:outgoing>Flow_T6b_AND_join</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:parallelGateway id="AND_join">
+      <bpmn:incoming>Flow_T6b_AND_join</bpmn:incoming>
+      <bpmn:incoming>Flow_T3_AND_join</bpmn:incoming>
+      <bpmn:outgoing>Flow_AND_join_T7</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:sendTask id="T7" name="Настроить и отправить рассылку (3 дня)">
+      <bpmn:incoming>Flow_AND_join_T7</bpmn:incoming>
+      <bpmn:outgoing>Flow_T7_C_done</bpmn:outgoing>
+    </bpmn:sendTask>
+    <bpmn:intermediateCatchEvent id="C_done" name="Кампания завершилась">
+      <bpmn:incoming>Flow_T7_C_done</bpmn:incoming>
+      <bpmn:outgoing>Flow_C_done_T8</bpmn:outgoing>
+      <bpmn:timerEventDefinition id="Def_C_done">
+        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT1H</bpmn:timeDuration>
+      </bpmn:timerEventDefinition>
+    </bpmn:intermediateCatchEvent>
+    <bpmn:userTask id="T8" name="Посчитать итоги, написать вывод (5 дней)">
+      <bpmn:incoming>Flow_C_done_T8</bpmn:incoming>
+      <bpmn:outgoing>Flow_T8_End_ok</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:endEvent id="End_ok" name="Вывод готов">
+      <bpmn:incoming>Flow_T8_End_ok</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:exclusiveGateway id="GW_m">
+      <bpmn:incoming>Flow_T4b_GW_m</bpmn:incoming>
+      <bpmn:incoming>Flow_GW_ok_GW_m</bpmn:incoming>
+      <bpmn:outgoing>Flow_GW_m_T5</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:userTask id="T3" name="Выгрузить сегмент и контроль (1 день)">
+      <bpmn:incoming>Flow_AND_split_T3</bpmn:incoming>
+      <bpmn:outgoing>Flow_T3_AND_join</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_Start_idea_T1" sourceRef="Start_idea" targetRef="T1" />
+    <bpmn:sequenceFlow id="Flow_T1_T2" sourceRef="T1" targetRef="T2" />
+    <bpmn:sequenceFlow id="Flow_T2_GW_go" sourceRef="T2" targetRef="GW_go" />
+    <bpmn:sequenceFlow id="Flow_GW_go_End_rej" name="Эффект мал" sourceRef="GW_go" targetRef="End_rej" />
+    <bpmn:sequenceFlow id="Flow_GW_go_AND_split" name="Эффект есть" sourceRef="GW_go" targetRef="AND_split" />
+    <bpmn:sequenceFlow id="Flow_AND_split_T4" sourceRef="AND_split" targetRef="T4" />
+    <bpmn:sequenceFlow id="Flow_AND_split_T3" sourceRef="AND_split" targetRef="T3" />
+    <bpmn:sequenceFlow id="Flow_T4_T4b" sourceRef="T4" targetRef="T4b" />
+    <bpmn:sequenceFlow id="Flow_T4b_GW_m" sourceRef="T4b" targetRef="GW_m" />
+    <bpmn:sequenceFlow id="Flow_GW_m_T5" sourceRef="GW_m" targetRef="T5" />
+    <bpmn:sequenceFlow id="Flow_T5_T6" sourceRef="T5" targetRef="T6" />
+    <bpmn:sequenceFlow id="Flow_T6_GW_ok" sourceRef="T6" targetRef="GW_ok" />
+    <bpmn:sequenceFlow id="Flow_GW_ok_T6b" name="Ошибок нет" sourceRef="GW_ok" targetRef="T6b" />
+    <bpmn:sequenceFlow id="Flow_GW_ok_GW_m" name="Ошибки (8%)" sourceRef="GW_ok" targetRef="GW_m" />
+    <bpmn:sequenceFlow id="Flow_T6b_AND_join" sourceRef="T6b" targetRef="AND_join" />
+    <bpmn:sequenceFlow id="Flow_T3_AND_join" sourceRef="T3" targetRef="AND_join" />
+    <bpmn:sequenceFlow id="Flow_AND_join_T7" sourceRef="AND_join" targetRef="T7" />
+    <bpmn:sequenceFlow id="Flow_T7_C_done" sourceRef="T7" targetRef="C_done" />
+    <bpmn:sequenceFlow id="Flow_C_done_T8" sourceRef="C_done" targetRef="T8" />
+    <bpmn:sequenceFlow id="Flow_T8_End_ok" sourceRef="T8" targetRef="End_ok" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="Diagram_asis">
+    <bpmndi:BPMNPlane id="Plane_asis" bpmnElement="Collab_campaign_asis">
+      <bpmndi:BPMNShape id="Pool_campaign_asis_di" bpmnElement="Pool_campaign_asis" isHorizontal="true">
+        <dc:Bounds x="150" y="80" width="2448" height="800" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_0_di" bpmnElement="Lane_0" isHorizontal="true">
+        <dc:Bounds x="180" y="80" width="2418" height="140" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_1_di" bpmnElement="Lane_1" isHorizontal="true">
+        <dc:Bounds x="180" y="220" width="2418" height="110" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_2_di" bpmnElement="Lane_2" isHorizontal="true">
+        <dc:Bounds x="180" y="330" width="2418" height="150" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_3_di" bpmnElement="Lane_3" isHorizontal="true">
+        <dc:Bounds x="180" y="480" width="2418" height="110" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_4_di" bpmnElement="Lane_4" isHorizontal="true">
+        <dc:Bounds x="180" y="590" width="2418" height="120" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_5_di" bpmnElement="Lane_5" isHorizontal="true">
+        <dc:Bounds x="180" y="710" width="2418" height="170" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Start_idea_di" bpmnElement="Start_idea">
+        <dc:Bounds x="250" y="143" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="218" y="184" width="100" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="T1_di" bpmnElement="T1">
+        <dc:Bounds x="336" y="123" width="120" height="76" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="T2_di" bpmnElement="T2">
+        <dc:Bounds x="506" y="737" width="120" height="76" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="GW_go_di" bpmnElement="GW_go" isMarkerVisible="true">
+        <dc:Bounds x="686" y="750" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="680" y="717" width="62" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="AND_split_di" bpmnElement="AND_split">
+        <dc:Bounds x="816" y="750" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="End_rej_di" bpmnElement="End_rej">
+        <dc:Bounds x="823" y="828" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="865" y="832" width="100" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="T4_di" bpmnElement="T4">
+        <dc:Bounds x="916" y="123" width="120" height="76" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="T3_di" bpmnElement="T3">
+        <dc:Bounds x="916" y="737" width="120" height="76" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="T4b_di" bpmnElement="T4b">
+        <dc:Bounds x="1086" y="237" width="120" height="76" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="GW_m_di" bpmnElement="GW_m" isMarkerVisible="true">
+        <dc:Bounds x="1256" y="365" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="T5_di" bpmnElement="T5">
+        <dc:Bounds x="1356" y="352" width="120" height="76" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="T6_di" bpmnElement="T6">
+        <dc:Bounds x="1526" y="123" width="120" height="76" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="GW_ok_di" bpmnElement="GW_ok" isMarkerVisible="true">
+        <dc:Bounds x="1696" y="136" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1671" y="103" width="100" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="T6b_di" bpmnElement="T6b">
+        <dc:Bounds x="1826" y="497" width="120" height="76" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="AND_join_di" bpmnElement="AND_join">
+        <dc:Bounds x="1996" y="625" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="T7_di" bpmnElement="T7">
+        <dc:Bounds x="2096" y="612" width="120" height="76" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="C_done_di" bpmnElement="C_done">
+        <dc:Bounds x="2266" y="757" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2234" y="798" width="100" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="T8_di" bpmnElement="T8">
+        <dc:Bounds x="2352" y="737" width="120" height="76" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="End_ok_di" bpmnElement="End_ok">
+        <dc:Bounds x="2522" y="757" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2506" y="798" width="68" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_Start_idea_T1_di" bpmnElement="Flow_Start_idea_T1">
+        <di:waypoint x="286" y="161" />
+        <di:waypoint x="336" y="161" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_T1_T2_di" bpmnElement="Flow_T1_T2">
+        <di:waypoint x="456" y="161" />
+        <di:waypoint x="481" y="161" />
+        <di:waypoint x="481" y="775" />
+        <di:waypoint x="506" y="775" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_T2_GW_go_di" bpmnElement="Flow_T2_GW_go">
+        <di:waypoint x="626" y="775" />
+        <di:waypoint x="686" y="775" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_GW_go_End_rej_di" bpmnElement="Flow_GW_go_End_rej">
+        <di:waypoint x="711" y="800" />
+        <di:waypoint x="711" y="846" />
+        <di:waypoint x="823" y="846" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="719" y="808" width="62" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_GW_go_AND_split_di" bpmnElement="Flow_GW_go_AND_split">
+        <di:waypoint x="736" y="775" />
+        <di:waypoint x="816" y="775" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="744" y="757" width="68" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_AND_split_T4_di" bpmnElement="Flow_AND_split_T4">
+        <di:waypoint x="841" y="750" />
+        <di:waypoint x="841" y="161" />
+        <di:waypoint x="916" y="161" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_AND_split_T3_di" bpmnElement="Flow_AND_split_T3">
+        <di:waypoint x="866" y="775" />
+        <di:waypoint x="916" y="775" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_T4_T4b_di" bpmnElement="Flow_T4_T4b">
+        <di:waypoint x="1036" y="161" />
+        <di:waypoint x="1061" y="161" />
+        <di:waypoint x="1061" y="275" />
+        <di:waypoint x="1086" y="275" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_T4b_GW_m_di" bpmnElement="Flow_T4b_GW_m">
+        <di:waypoint x="1206" y="275" />
+        <di:waypoint x="1281" y="275" />
+        <di:waypoint x="1281" y="365" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_GW_m_T5_di" bpmnElement="Flow_GW_m_T5">
+        <di:waypoint x="1306" y="390" />
+        <di:waypoint x="1356" y="390" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_T5_T6_di" bpmnElement="Flow_T5_T6">
+        <di:waypoint x="1476" y="390" />
+        <di:waypoint x="1501" y="390" />
+        <di:waypoint x="1501" y="161" />
+        <di:waypoint x="1526" y="161" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_T6_GW_ok_di" bpmnElement="Flow_T6_GW_ok">
+        <di:waypoint x="1646" y="161" />
+        <di:waypoint x="1696" y="161" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_GW_ok_T6b_di" bpmnElement="Flow_GW_ok_T6b">
+        <di:waypoint x="1746" y="161" />
+        <di:waypoint x="1886" y="161" />
+        <di:waypoint x="1886" y="497" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1754" y="143" width="62" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_GW_ok_GW_m_di" bpmnElement="Flow_GW_ok_GW_m">
+        <di:waypoint x="1721" y="186" />
+        <di:waypoint x="1721" y="459" />
+        <di:waypoint x="1281" y="459" />
+        <di:waypoint x="1281" y="415" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1729" y="194" width="68" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_T6b_AND_join_di" bpmnElement="Flow_T6b_AND_join">
+        <di:waypoint x="1946" y="535" />
+        <di:waypoint x="2021" y="535" />
+        <di:waypoint x="2021" y="625" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_T3_AND_join_di" bpmnElement="Flow_T3_AND_join">
+        <di:waypoint x="1036" y="775" />
+        <di:waypoint x="2021" y="775" />
+        <di:waypoint x="2021" y="675" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_AND_join_T7_di" bpmnElement="Flow_AND_join_T7">
+        <di:waypoint x="2046" y="650" />
+        <di:waypoint x="2096" y="650" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_T7_C_done_di" bpmnElement="Flow_T7_C_done">
+        <di:waypoint x="2216" y="650" />
+        <di:waypoint x="2241" y="650" />
+        <di:waypoint x="2241" y="775" />
+        <di:waypoint x="2266" y="775" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_C_done_T8_di" bpmnElement="Flow_C_done_T8">
+        <di:waypoint x="2302" y="775" />
+        <di:waypoint x="2352" y="775" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_T8_End_ok_di" bpmnElement="Flow_T8_End_ok">
+        <di:waypoint x="2472" y="775" />
+        <di:waypoint x="2522" y="775" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Ext_0_di" bpmnElement="Ext_0" isHorizontal="true">
+        <dc:Bounds x="2046" y="930" width="220" height="60" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="MF_0_di" bpmnElement="MF_0">
+        <di:waypoint x="2156" y="688" />
+        <di:waypoint x="2156" y="930" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

@@ -1,10 +1,25 @@
+# Временные и системные файлы
 ~$*
 *.tmp
 .DS_Store
 Thumbs.db
 .obsidian/
 .vscode/
+__pycache__/
 
 # Условия отбора не публикуем
 *.pdf
 !slides/*.pdf
+
+# Рабочие материалы, не входят в решение
+docs/dor-dod.md
+docs/decisions.md
+docs/questions-bot.md
+diagrams/src/
+slides/_tmp/
+.neuroslop-backup/
+neuroslop_report.md
+
+# Рабочий контекст для ИИ
+CLAUDE.md
+context-compression/

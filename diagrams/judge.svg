@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="680" viewBox="0 0 1600 680"><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#374151"/></marker></defs><rect width="1600" height="680" fill="#FFFFFF"/><text x="50" y="52" font-family="Inter, Lato, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="28" font-weight="700" fill="#111827" text-anchor="start"><tspan x="50" dy="0">Как судья проверяет кампанию</tspan></text>
+<rect x="1010" y="38" width="22" height="16" rx="4" fill="#FFEDD5" stroke="#C2410C" stroke-width="2"/>
+<text x="1040" y="51" font-family="Inter, Lato, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="15" font-weight="400" fill="#1F2937" text-anchor="start"><tspan x="1040" dy="0">LLM</tspan></text>
+<rect x="1091.8" y="38" width="22" height="16" rx="4" fill="#DCFCE7" stroke="#15803D" stroke-width="2"/>
+<text x="1121.8" y="51" font-family="Inter, Lato, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="15" font-weight="400" fill="#1F2937" text-anchor="start"><tspan x="1121.8" dy="0">Правила</tspan></text>
+<rect x="1208.0" y="38" width="22" height="16" rx="4" fill="#EDE9FE" stroke="#6D28D9" stroke-width="2"/>
+<text x="1238.0" y="51" font-family="Inter, Lato, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="15" font-weight="400" fill="#1F2937" text-anchor="start"><tspan x="1238.0" dy="0">Человек</tspan></text>
+<rect x="1324.2" y="38" width="22" height="16" rx="4" fill="#F3F4F6" stroke="#4B5563" stroke-width="2"/>
+<text x="1354.2" y="51" font-family="Inter, Lato, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="15" font-weight="400" fill="#1F2937" text-anchor="start"><tspan x="1354.2" dy="0">Данные</tspan></text>
+<rect x="50" y="150" width="150" height="116" rx="10" fill="#FFFFFF" stroke="#1F2937" stroke-width="2"/>
+<text x="125.0" y="201.5" font-family="Inter, Lato, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="20" font-weight="700" fill="#111827" text-anchor="middle"><tspan x="125.0" dy="0">Кампания</tspan></text>
+<text x="125.0" y="228.5" font-family="Inter, Lato, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="15" font-weight="400" fill="#4B5563" text-anchor="middle"><tspan x="125.0" dy="0">от агента</tspan></text>
+<rect x="240" y="150" width="200" height="116" rx="10" fill="#DCFCE7" stroke="#15803D" stroke-width="2"/>
+<text x="340.0" y="201.5" font-family="Inter, Lato, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="20" font-weight="700" fill="#111827" text-anchor="middle"><tspan x="340.0" dy="0">Слой 1: код</tspan></text>
+<text x="340.0" y="228.5" font-family="Inter, Lato, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="15" font-weight="400" fill="#4B5563" text-anchor="middle"><tspan x="340.0" dy="0">жёсткие проверки</tspan></text>
+<path d="M 200 208.0 L 238 208.0" fill="none" stroke="#374151" stroke-width="2" marker-end="url(#ah)"/>
+<path d="M 440 208.0 L 466 208.0" fill="none" stroke="#374151" stroke-width="2" marker-end="url(#ah)"/>
+<polygon points="520,156.0 572,208.0 520,260.0 468,208.0" fill="#DCFCE7" stroke="#15803D" stroke-width="2"/>
+<text x="520" y="214.0" font-family="Inter, Lato, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="13" font-weight="700" fill="#111827" text-anchor="middle"><tspan x="520" dy="0">Пройдено?</tspan></text>
+<text x="576" y="196.0" font-family="Inter, Lato, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="15" font-weight="700" fill="#15803D" text-anchor="start"><tspan x="576" dy="0">да</tspan></text>
+<rect x="612" y="150" width="210" height="116" rx="10" fill="#FFEDD5" stroke="#C2410C" stroke-width="2"/>
+<text x="717.0" y="201.5" font-family="Inter, Lato, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="20" font-weight="700" fill="#111827" text-anchor="middle"><tspan x="717.0" dy="0">Слой 2: модель</tspan></text>
+<text x="717.0" y="228.5" font-family="Inter, Lato, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="15" font-weight="400" fill="#4B5563" text-anchor="middle"><tspan x="717.0" dy="0">тон и смысл</tspan></text>
+<path d="M 572 208.0 L 610 208.0" fill="none" stroke="#374151" stroke-width="2" marker-end="url(#ah)"/>
+<text x="717" y="296" font-family="Inter, Lato, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="15" font-weight="400" fill="#C2410C" text-anchor="middle" font-style="italic"><tspan x="717" dy="0">другая модель, не видит</tspan></text>
+<text x="717" y="316" font-family="Inter, Lato, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="15" font-weight="400" fill="#C2410C" text-anchor="middle" font-style="italic"><tspan x="717" dy="0">рассуждений агента</tspan></text>
+<rect x="862" y="150" width="180" height="116" rx="10" fill="#DCFCE7" stroke="#15803D" stroke-width="2"/>
+<text x="952.0" y="201.5" font-family="Inter, Lato, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="20" font-weight="700" fill="#111827" text-anchor="middle"><tspan x="952.0" dy="0">Класс риска</tspan></text>
+<text x="952.0" y="228.5" font-family="Inter, Lato, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="15" font-weight="400" fill="#4B5563" text-anchor="middle"><tspan x="952.0" dy="0">правило К0–К3</tspan></text>
+<path d="M 822 208.0 L 860 208.0" fill="none" stroke="#374151" stroke-width="2" marker-end="url(#ah)"/>
+<path d="M 1042 208.0 L 1064 208.0" fill="none" stroke="#374151" stroke-width="2" marker-end="url(#ah)"/>
+<polygon points="1112,162.0 1158,208.0 1112,254.0 1066,208.0" fill="#DCFCE7" stroke="#15803D" stroke-width="2"/>
+<text x="1112" y="214.0" font-family="Inter, Lato, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="15" font-weight="700" fill="#111827" text-anchor="middle"><tspan x="1112" dy="0">К0?</tspan></text>
+<rect x="1250" y="150" width="300" height="116" rx="10" fill="#FFFFFF" stroke="#1F2937" stroke-width="2"/>
+<text x="1400.0" y="201.5" font-family="Inter, Lato, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="20" font-weight="700" fill="#111827" text-anchor="middle"><tspan x="1400.0" dy="0">Отправка</tspan></text>
+<text x="1400.0" y="228.5" font-family="Inter, Lato, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="15" font-weight="400" fill="#4B5563" text-anchor="middle"><tspan x="1400.0" dy="0">волнами, с мониторингом</tspan></text>
+<path d="M 1158 208.0 L 1248 208.0" fill="none" stroke="#374151" stroke-width="2" marker-end="url(#ah)"/>
+<text x="1166" y="196.0" font-family="Inter, Lato, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="15" font-weight="700" fill="#15803D" text-anchor="start"><tspan x="1166" dy="0">да: К0</tspan></text>
+<path d="M 1112 254.0 L 1112 368" fill="none" stroke="#6D28D9" stroke-width="2" marker-end="url(#ah)"/>
+<text x="1122" y="280.0" font-family="Inter, Lato, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="15" font-weight="700" fill="#6D28D9" text-anchor="start"><tspan x="1122" dy="0">нет: К1–К3</tspan></text>
+<rect x="960" y="370" width="390" height="100" rx="10" fill="#EDE9FE" stroke="#6D28D9" stroke-width="2"/>
+<text x="1155.0" y="413.175" font-family="Inter, Lato, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="19" font-weight="700" fill="#111827" text-anchor="middle"><tspan x="1155.0" dy="0">Слой 3: человек</tspan></text>
+<text x="1155.0" y="440.175" font-family="Inter, Lato, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="15" font-weight="400" fill="#4B5563" text-anchor="middle"><tspan x="1155.0" dy="0">К1 маркетолог · К2 + редактор · К3 + юрист</tspan></text>
+<path d="M 1350 420.0 L 1400 420.0 L 1400 268" fill="none" stroke="#6D28D9" stroke-width="2" marker-end="url(#ah)"/>
+<text x="1410" y="410.0" font-family="Inter, Lato, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="15" font-weight="700" fill="#6D28D9" text-anchor="start"><tspan x="1410" dy="0">утвердил</tspan></text>
+<path d="M 520 260.0 L 520 378" fill="none" stroke="#B91C1C" stroke-width="2" marker-end="url(#ah)"/>
+<text x="530" y="286.0" font-family="Inter, Lato, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="15" font-weight="700" fill="#B91C1C" text-anchor="start"><tspan x="530" dy="0">нет</tspan></text>
+<rect x="425" y="380" width="190" height="74" rx="10" fill="#FEE2E2" stroke="#B91C1C" stroke-width="2"/>
+<text x="520.0" y="410.175" font-family="Inter, Lato, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="19" font-weight="700" fill="#B91C1C" text-anchor="middle"><tspan x="520.0" dy="0">Исправить</tspan></text>
+<text x="520.0" y="437.175" font-family="Inter, Lato, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="15" font-weight="400" fill="#4B5563" text-anchor="middle"><tspan x="520.0" dy="0">2-й раз → К3</tspan></text>
+<path d="M 425 417.0 L 125 417.0 L 125 268" fill="none" stroke="#B91C1C" stroke-width="2" marker-end="url(#ah)"/>
+<rect x="36" y="530" width="1528" height="118" rx="14" fill="#F9FAFB" stroke="#D1D5DB" stroke-width="1.5"/>
+<text x="66" y="596.0" font-family="Inter, Lato, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="19" font-weight="700" fill="#374151" text-anchor="start"><tspan x="66" dy="0">Как проверяем судью</tspan></text>
+<rect x="400" y="551.0" width="300" height="76" rx="10" fill="#F3F4F6" stroke="#4B5563" stroke-width="2"/>
+<text x="550.0" y="582.175" font-family="Inter, Lato, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="19" font-weight="700" fill="#111827" text-anchor="middle"><tspan x="550.0" dy="0">Эталонный набор</tspan></text>
+<text x="550.0" y="609.175" font-family="Inter, Lato, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="15" font-weight="400" fill="#4B5563" text-anchor="middle"><tspan x="550.0" dy="0">история + подсаженные ошибки</tspan></text>
+<rect x="790" y="551.0" width="300" height="76" rx="10" fill="#DCFCE7" stroke="#15803D" stroke-width="2"/>
+<text x="940.0" y="582.175" font-family="Inter, Lato, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="19" font-weight="700" fill="#111827" text-anchor="middle"><tspan x="940.0" dy="0">Регресс</tspan></text>
+<text x="940.0" y="609.175" font-family="Inter, Lato, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="15" font-weight="400" fill="#4B5563" text-anchor="middle"><tspan x="940.0" dy="0">при каждой смене версии</tspan></text>
+<rect x="1180" y="551.0" width="300" height="76" rx="10" fill="#DCFCE7" stroke="#15803D" stroke-width="2"/>
+<text x="1330.0" y="582.175" font-family="Inter, Lato, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="19" font-weight="700" fill="#111827" text-anchor="middle"><tspan x="1330.0" dy="0">Гейт</tspan></text>
+<text x="1330.0" y="609.175" font-family="Inter, Lato, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="15" font-weight="400" fill="#4B5563" text-anchor="middle"><tspan x="1330.0" dy="0">100% критических ошибок</tspan></text>
+<path d="M 700 589.0 L 788 589.0" fill="none" stroke="#374151" stroke-width="2" marker-end="url(#ah)"/>
+<path d="M 1090 589.0 L 1178 589.0" fill="none" stroke="#374151" stroke-width="2" marker-end="url(#ah)"/></svg>
